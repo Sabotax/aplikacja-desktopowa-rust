@@ -1,0 +1,7 @@
+{
+    "rust-analyzer.cargo.buildScripts.overrideCommand": null,
+    "rust-analyzer.linkedProjects": [
+        "aplikacja/frontend/Cargo.toml",
+        "aplikacja/src-tauri/Cargo.toml"
+    ]
+}

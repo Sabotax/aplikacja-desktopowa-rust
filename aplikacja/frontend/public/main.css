@@ -1,0 +1,27 @@
+body {
+    margin: 20px;
+    background: #2d2d2d;
+    color: white;
+}
+
+.heading {
+    text-align: center;
+}
+
+#mainLeft {
+    width: 100px;
+}
+
+.panel {
+    border-color: black;
+    border-style: solid;
+    border-width: 2px; 
+}
+
+.panelUnactive {
+    background-color: red;
+}
+
+.panelActive {
+    background-color: orange;
+}

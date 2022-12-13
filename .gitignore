@@ -1,0 +1,4 @@
+
+aplikacja/frontend/target/*
+aplikacja/src-tauri/target/*
+aplikacja/frontend/dist/*
