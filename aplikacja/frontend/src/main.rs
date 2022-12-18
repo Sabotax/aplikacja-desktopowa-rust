@@ -1,10 +1,10 @@
 use wasm_bindgen::prelude::*;
-use wasm_bindgen_futures::spawn_local;
-use web_sys::window;
-use yew::prelude::*;
+// use wasm_bindgen_futures::spawn_local;
+// use web_sys::window;
+// use yew::prelude::*;
 pub mod view;
 
-use view::mainApp::App;
+use view::main_app::App;
 
 #[wasm_bindgen(module = "/public/glue.js")]
 extern "C" {

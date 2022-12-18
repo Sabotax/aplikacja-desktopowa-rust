@@ -1,5 +1,10 @@
+:root {
+    --window_height: 798px;
+    --window_width: 1198px;
+}
+
 body {
-    margin: 20px;
+    padding: 1px;
     background: #2d2d2d;
     color: white;
 }
@@ -10,18 +15,32 @@ body {
 
 #mainLeft {
     width: 100px;
+    float: left;
+    padding: 10px;
+    height: var(--window_height);
+    border: gray 1px solid;
+    margin-right: 50px;
+}
+
+#mainRight {
+    float:left;
+    border: gray 1px solid;
+    height: var(--window_height);
+    width: 950px;
+    padding: 10px;
 }
 
 .panel {
     border-color: black;
     border-style: solid;
     border-width: 2px; 
+    margin-bottom: 25px;
 }
 
-.panelUnactive {
-    background-color: red;
+.panelInactive {
+    background-color: rgb(110, 103, 103);
 }
 
 .panelActive {
-    background-color: orange;
+    background-color: rgb(94, 87, 75);
 }

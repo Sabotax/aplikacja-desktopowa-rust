@@ -1,1 +1,1 @@
-pub mod mainApp;
+pub mod main_app;
