@@ -4,6 +4,7 @@
 )]
 
 fn main() {
+  println!("start back");
   tauri::Builder::default()
     .invoke_handler(tauri::generate_handler![hello])
     .run(tauri::generate_context!())
