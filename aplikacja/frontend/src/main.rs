@@ -5,6 +5,8 @@ use wasm_bindgen::prelude::*;
 pub mod view;
 
 use view::main_app::App;
+use gloo_console::log;
+use wasm_bindgen::JsValue;
 
 #[wasm_bindgen(module = "/public/glue.js")]
 extern "C" {
@@ -13,5 +15,8 @@ extern "C" {
 }
 
 fn main() {
+    let object = JsValue::from("world");
+    log!("Hello", object);
+
     yew::Renderer::<App>::new().render();
 }

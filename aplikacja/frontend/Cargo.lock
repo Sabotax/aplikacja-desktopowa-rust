@@ -71,6 +71,7 @@ name = "frontend"
 version = "0.1.0"
 dependencies = [
  "gloo",
+ "gloo-console",
  "js-sys",
  "wasm-bindgen",
  "wasm-bindgen-futures",

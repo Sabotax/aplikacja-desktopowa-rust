@@ -1,3 +1,4 @@
+use gloo_console::log;
 // use gloo::console;
 // use js_sys::{Date, WebAssembly::Table};
 use yew::{html, Component, Context, Html, classes};
@@ -45,7 +46,7 @@ impl Component for App {
     }
 
     fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
-        println!("Message from Rust: {}", msg.to_string());
+        log!("ABC");
         if msg == self.state {
             self.state = AppState::Default;
             true
