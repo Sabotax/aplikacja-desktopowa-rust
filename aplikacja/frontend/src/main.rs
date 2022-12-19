@@ -13,10 +13,19 @@ extern "C" {
     #[wasm_bindgen(js_name = invokeHello, catch)]
     pub async fn hello(name: String) -> Result<JsValue, JsValue>;
 }
-
+use std::collections::HashMap;
 fn main() {
     let object = JsValue::from("world");
     log!("Hello", object);
 
     yew::Renderer::<App>::new().render();
+}
+
+fn test123()-> Result<(), Box<dyn std::error::Error>> {
+    let resp = reqwest::get("https://httpbin.org/ip")
+        .await?
+        .json::<HashMap<String, String>>()
+        .await?;
+    println!("{:#?}", resp);
+    Ok(())
 }
