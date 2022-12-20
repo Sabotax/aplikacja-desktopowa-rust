@@ -3,10 +3,13 @@ use wasm_bindgen::prelude::*;
 // use web_sys::window;
 // use yew::prelude::*;
 pub mod view;
+pub mod network;
 
 use view::main_app::App;
+use network::network_service;
 use gloo_console::log;
 use wasm_bindgen::JsValue;
+
 
 #[wasm_bindgen(module = "/public/glue.js")]
 extern "C" {
@@ -15,8 +18,7 @@ extern "C" {
 }
 
 fn main() {
-    let object = JsValue::from("world");
-    log!("Hello", object);
-
     yew::Renderer::<App>::new().render();
+
+    
 }

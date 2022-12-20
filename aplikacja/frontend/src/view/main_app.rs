@@ -1,8 +1,20 @@
 use gloo_console::log;
+use web_sys::console;
 // use gloo::console;
 // use js_sys::{Date, WebAssembly::Table};
-use yew::{html, Component, Context, Html, classes};
+use yew::{html, Component, Context, Html, classes, UseStateHandle, use_state_eq, use_effect_with_deps};
+use std::borrow::Borrow;
+use std::error::Error;
 use std::marker::Copy;
+use reqwasm::http::{Request, Headers,ReferrerPolicy,RequestMode};
+use js_sys::JsString;
+use yew::use_state;
+use wasm_bindgen_futures::spawn_local;
+use web_sys::window;
+use crate::hello;
+use yew::prelude::*;
+use crate::network::network_service;
+use yew::Hook;
 // use std::fmt::{self, Debug, Display};
 // Define the possible messages which can be sent to the component
 
@@ -135,6 +147,8 @@ impl Component for App {
     }
 
     fn view(&self, ctx: &Context<Self>) -> Html {
+        let counter = use_counter(0);
+        
         html! {
             <div>
                 <div id="mainLeft">
@@ -196,7 +210,7 @@ impl Component for App {
                 </div>
                 <div id="mainRight">
                     {match self.left_state{
-                        LeftState::Default => "Default",
+                        LeftState::Default => *counter,
                         LeftState::Dane => "Dane",
                         LeftState::Led => "Led",
                         LeftState::Table => "Table",
