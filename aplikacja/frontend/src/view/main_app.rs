@@ -153,7 +153,6 @@ impl Component for App {
         let on_panel_select = Callback::from(move |action: PanelSwitchOutcome| {
             //TODO
         });
-        let test = PanelSwitchOutcome::Dane;
 
         html! {
             <div>
@@ -161,9 +160,9 @@ impl Component for App {
                     <PanelKomponent
                         id= {"strona1_panel".to_string()}
                         label= {"Panel Danych"}
-                        associated_action= {&test}
+                        associated_action= {&PanelSwitchOutcome::Dane}
                         active= {false}
-                        on_click= {&on_panel_select}
+                        callback= {&on_panel_select}
                     />
 
                     <div 
