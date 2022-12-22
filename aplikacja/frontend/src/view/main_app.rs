@@ -2,19 +2,21 @@ use gloo_console::log;
 use web_sys::console;
 // use gloo::console;
 // use js_sys::{Date, WebAssembly::Table};
-use yew::{html, Component, Context, Html, classes, UseStateHandle, use_state_eq, use_effect_with_deps};
+use yew::{html, Component, Context, Html, classes, UseStateHandle, use_state, use_effect_with_deps};
 use std::borrow::Borrow;
 use std::error::Error;
 use std::marker::Copy;
 use reqwasm::http::{Request, Headers,ReferrerPolicy,RequestMode};
 use js_sys::JsString;
-use yew::use_state;
 use wasm_bindgen_futures::spawn_local;
 use web_sys::window;
 use crate::hello;
 use yew::prelude::*;
 use crate::network::network_service;
 use yew::Hook;
+use crate::view::data_component::TestKomponent;
+use crate::view::panel_component::PanelKomponent;
+use crate::view::panel_component::PanelSwitchOutcome;
 // use std::fmt::{self, Debug, Display};
 // Define the possible messages which can be sent to the component
 
@@ -147,24 +149,21 @@ impl Component for App {
     }
 
     fn view(&self, ctx: &Context<Self>) -> Html {
-        let counter = use_counter(0);
-        
+
+        let on_panel_select = Callback::from(move |action: &'static PanelSwitchOutcome| {
+            //TODO
+        });
+
         html! {
             <div>
                 <div id="mainLeft">
-                    <div 
-                    id="strona1_panel"
-                    class={classes!("panel", match self.left_state {
-                        LeftState::Default => "panelInactive",
-                        LeftState::Dane => "panelActive",
-                        LeftState::Led => "panelInactive",
-                        LeftState::Table => "panelInactive",
-                        LeftState::Settings => "panelInactive"
-                    })}
-                    onclick={ctx.link().callback(|_| AppMsg::Left(LeftState::Dane))}
-                    >  
-                        <p>{"Panel Danych"}</p>
-                    </div>
+                    <PanelKomponent
+                        id= {"strona1_panel".to_string()}
+                        label= {"Panel Danych"}
+                        associated_action= {&PanelSwitchOutcome::Dane}
+                        active= {false}
+                        on_click= {on_panel_select}
+                    />
 
                     <div 
                     id="strona2_panel"
@@ -207,10 +206,11 @@ impl Component for App {
                     >  
                         <p>{"Panel Ustawień"}</p>
                     </div>
+                    <TestKomponent/>
                 </div>
                 <div id="mainRight">
                     {match self.left_state{
-                        LeftState::Default => *counter,
+                        LeftState::Default => "Def",
                         LeftState::Dane => "Dane",
                         LeftState::Led => "Led",
                         LeftState::Table => "Table",
