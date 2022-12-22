@@ -17,7 +17,7 @@ pub struct PanelKomponentProps {
     pub label: String,
     pub associated_action: &'static PanelSwitchOutcome,
     pub active: bool,
-    pub on_click: Callback<&'static PanelSwitchOutcome>
+    pub on_click: Callback<PanelSwitchOutcome>
 }
 
 #[function_component(PanelKomponent)]

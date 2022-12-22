@@ -150,9 +150,10 @@ impl Component for App {
 
     fn view(&self, ctx: &Context<Self>) -> Html {
 
-        let on_panel_select = Callback::from(move |action: &'static PanelSwitchOutcome| {
+        let on_panel_select = Callback::from(move |action: PanelSwitchOutcome| {
             //TODO
         });
+        let test = PanelSwitchOutcome::Dane;
 
         html! {
             <div>
@@ -160,9 +161,9 @@ impl Component for App {
                     <PanelKomponent
                         id= {"strona1_panel".to_string()}
                         label= {"Panel Danych"}
-                        associated_action= {&PanelSwitchOutcome::Dane}
+                        associated_action= {&test}
                         active= {false}
-                        on_click= {on_panel_select}
+                        on_click= {&on_panel_select}
                     />
 
                     <div 
